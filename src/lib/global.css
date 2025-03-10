@@ -32,6 +32,9 @@ a:hover {
 	align-items: center;
 	float: right;
 }
+.img img {
+	width: 200px;
+}
 button {
 	margin-top: 10px;
 	background-color: #409eff;

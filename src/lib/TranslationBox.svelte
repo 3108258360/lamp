@@ -35,26 +35,24 @@
 		{#if box.title}
 			<h1>{box.title}</h1>
 		{/if}
-		{#each Object.keys(box) as key}
-			{#if key.includes("subhead")}
-				<h2>{box[key]}</h2>
-			{/if}
-			{#if key.includes("imgs")}
-				<div class="img">
-					<img src={box[key][0]} alt={box[key][0]} />
-					<div>
-						<button on:click={() => fullImage(0, boxIndex)}
-							>{translations[language].viewFullImage}</button
-						>
-					</div>
+		{#if box.subhead}
+			<h2>{box.subhead}</h2>
+		{/if}
+		{#if box.imgs}
+			<div class="img">
+				<img src={box.imgs[0]} alt={box.imgs[0]} />
+				<div>
+					<button on:click={() => fullImage(0, boxIndex)}
+						>{translations[language].viewFullImage}</button
+					>
 				</div>
-			{/if}
-			{#if key.includes("description")}
-				{#each box[key] as desc}
-					<p>{desc}</p>
-				{/each}
-			{/if}
-		{/each}
+			</div>
+		{/if}
+		{#if box.description}
+			{#each box.description as desc}
+				<p>{desc}</p>
+			{/each}
+		{/if}
 	</div>
 {/each}
 
