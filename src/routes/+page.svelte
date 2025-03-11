@@ -18,6 +18,7 @@
 			],
 			linkText: [
 				["Incandescent lamp", "/il"],
+				["Fluorescent Lamp", "/fl"],
 				["Sodium-vapor lamp", "/svl"]
 			],
 			buttonText: "中文"
@@ -35,6 +36,7 @@
 			],
 			linkText: [
 				["白炽灯", "/il"],
+				["荧光灯", "/fl"],
 				["钠灯", "/svl"]
 			],
 			buttonText: "English"
