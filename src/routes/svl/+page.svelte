@@ -5,9 +5,6 @@
 
 	const translations = {
 		en: {
-			viewFullImage: "View Full Image",
-			close: "Close",
-			returnHome: "Home",
 			boxes: [
 				{
 					title: "Sodium-vapor lamp",
@@ -37,12 +34,13 @@
 						"In 2017 Philips Lighting, the last manufacturer of LPS lamps, announced they were discontinuing production of the lamps due to falling demand. Initially, production was due to be phased out in the course of 2020, but this date was brought forward and the last lamps were produced at the Hamilton, Scotland factory on December 31,2019."
 					]
 				}
-			]
+			],
+			viewFullImage: "View Full Image",
+			close: "Close",
+			returnHome: "Home",
+			contents: "Cont"
 		},
 		zh: {
-			viewFullImage: "查看原图",
-			close: "退出",
-			returnHome: "首页",
 			boxes: [
 				{
 					title: "钠灯",
@@ -72,11 +70,16 @@
 						"2017年，作为最后一家生产LPS灯的制造商，飞利浦照明公司宣布由于需求下降，他们将停止生产这种灯。最初，计划在2020年逐步停产，但这一日期被提前了，最后一批灯于2019年12月31日在苏格兰汉密尔顿工厂生产。"
 					]
 				}
-			]
+			],
+			viewFullImage: "查看原图",
+			close: "退出",
+			returnHome: "首页",
+			contents: "目录"
 		}
 	};
 	type Language = "zh" | "en";
 	let language: Language = "en";
+	let showContents = false;
 
 	onMount(() => {
 		language = (localStorage.getItem("language") as Language) || "en";
@@ -86,6 +89,12 @@
 	});
 </script>
 
-<TranslationBox {translations} {language} />
+<TranslationBox {translations} {language} {showContents} />
 
 <button on:click={() => goto("/")} class="return-home">{translations[language].returnHome}</button>
+<button
+	on:click={() => {
+		showContents = !showContents;
+	}}
+	class="show-contents">{translations[language].contents}</button
+>

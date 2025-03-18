@@ -5,9 +5,6 @@
 
 	const translations = {
 		en: {
-			viewFullImage: "View Full Image",
-			close: "Close",
-			returnHome: "Home",
 			boxes: [
 				{
 					title: "The Mercury Vapour Lamp",
@@ -408,12 +405,13 @@
 						"The process of pre-shaping the arc tube ends prior to pinch sealing was rather tedious and something that lampmakers were keen to abandon in efforts to further speed the production.  In 1960 it was successfully abolished by incorporating a V-shape region into the top of the hammers used to make the quartz pinch-seal.  By heating a greater length of quartz at the end of the tube it could be partially pushed inwards as part of the pinching action, thereby forming a very neat conical end chamber around the electrodes.  This was the last process improvement made in the fabrication of MB style arc tubes, and since then the production method has remained largely unchanged.  To speed up the process alternative methods of heating have been introduced though.  The oxy-hydrogen fires are quite slow to heat up the quartz, and recent methods involve ionising the argon gas which is flushed over the electrodes to form a plasma torch, rather similar to the flame found in an atomic absorption spectrometer.  This method is much faster and cheaper to operate than traditional fires, but a large capital expenditure is required to construct the machinery."
 					]
 				}
-			]
+			],
+			viewFullImage: "View Full Image",
+			close: "Close",
+			returnHome: "Home",
+			contents: "Cont"
 		},
 		zh: {
-			viewFullImage: "查看原图",
-			close: "退出",
-			returnHome: "首页",
 			boxes: [
 				{
 					title: "水银灯",
@@ -814,11 +812,16 @@
 						"在进行捏合密封之前对弧管末端进行预成型的过程相当繁琐，灯具制造商渴望摒弃这一过程，以进一步加快生产速度。1960年，通过在用于制作石英捏合密封的锤子顶部加入一个V形区域，成功地废除了这一过程。通过加热管端更长的石英，作为捏合动作的一部分，可以将其部分向内推入，从而在电极周围形成一个非常整齐的圆锥形端室。这是MB式弧管制造过程中的最后一次工艺改进，从那时起，生产方法基本保持不变。不过，为了加快进程，引入了替代的加热方法。尽管氢氧火焰加热石英的速度相对较慢，但最近的方法涉及将通电极的氩气电离，形成等离子体火炬，类似于原子吸收光谱仪中的火焰。这种方法比传统火焰更快、更经济，但需要大量的资金来构建机器。"
 					]
 				}
-			]
+			],
+			viewFullImage: "查看原图",
+			close: "退出",
+			returnHome: "首页",
+			contents: "目录"
 		}
 	};
 	type Language = "zh" | "en";
 	let language: Language = "en";
+	let showContents = false;
 
 	onMount(() => {
 		language = (localStorage.getItem("language") as Language) || "en";
@@ -828,6 +831,12 @@
 	});
 </script>
 
-<TranslationBox {translations} {language} />
+<TranslationBox {translations} {language} {showContents} />
 
 <button on:click={() => goto("/")} class="return-home">{translations[language].returnHome}</button>
+<button
+	on:click={() => {
+		showContents = !showContents;
+	}}
+	class="show-contents">{translations[language].contents}</button
+>

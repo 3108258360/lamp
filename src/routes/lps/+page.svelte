@@ -5,9 +5,6 @@
 
 	const translations = {
 		en: {
-			viewFullImage: "View Full Image",
-			close: "Close",
-			returnHome: "Home",
 			boxes: [
 				{
 					title: "The Low Pressure Sodium Lamp",
@@ -254,12 +251,13 @@
 						"Upon application of the mains potential to the lamp terminals, the following sequence of events takes place for the 500 Hlm lamps.  It is the same for the 300 Hlm variants except that step 1 does not occur owing to the omission of the starting probe in that design.  The process is shown graphically in Figure S43.\n\t\t\n\t\t\tThe easiest position for the discharge to strike is between the auxiliary probe electrode which is adjacent to one of the main electrodes.  This ionises the gas filling and generates a small amount of light which lowers the ionisation potential of the gas in its vicinity.  The discharge current is limited to a very low value by the high value of the first resistance.\n\t\t\tOwing to the great magnitude of the first resistance, the discharge promptly transfers to the easier route of breaking down between this main electrode and the end of the nearby insulated wire in that limb of the discharge tube.  To complete the circuit, breakdown also occurs at the gap in the U-bend region of the discharge tube.  The discharge current is able to increase somewhat after this step, owing to the lower value of the second resistor.  It is unclear whether or not any heating effect of the tungsten filaments in the insulated tubes takes place during this stage, which might play some further role in lowering the striking voltage.\n\t\t\tAt this moment with small discharges operating both at the U-bend and adjacent to one of the main electrodes, the gas filling becomes sufficiently conductive that a discharge is struck directly between the two main electrodes, its current being limited of course to a much higher value by the external choke that sets the main lamp current."
 					]
 				}
-			]
+			],
+			viewFullImage: "View Full Image",
+			close: "Close",
+			returnHome: "Home",
+			contents: "Cont"
 		},
 		zh: {
-			viewFullImage: "查看原图",
-			close: "退出",
-			returnHome: "首页",
 			boxes: [
 				{
 					title: "低压钠灯",
@@ -506,11 +504,16 @@
 						"当将市电电压施加到灯端子上时，对于500赫夫纳流明灯，会发生以下一系列事件。300赫夫纳流明变体的情况相同，只是由于该设计省略了启动探针，因此步骤1不会发生。该过程在图S43中以图形方式展示。\n\t\t\n\t\t\t放电最容易在辅助探针电极与其中一个主电极相邻的位置激发。这使气体填充物电离，并产生少量光，从而降低了其周围气体的电离势。由于第一个电阻的值很高，放电电流被限制在非常低的值。\n\t\t\t由于第一个电阻的值极大，放电迅速转移到更容易在该放电管肢的这个主电极与附近的隔离导线末端之间击穿的路径上。为了完成电路，在放电管的U形弯区域的间隙处也发生了击穿。由于第二个电阻的值较低，放电电流在这一阶段后能够有所增加。目前尚不清楚在这一阶段，隔离管内的钨丝是否产生了任何加热效应，这可能在降低击穿电压方面发挥了进一步的作用。\n\t\t\t此时，U形弯和其中一个主电极附近都存在小放电，气体填充物变得足够导电，以至于在两个主电极之间直接激发了放电，当然，其电流当然被设置主灯电流的外部扼流圈限制在更高的值。"
 					]
 				}
-			]
+			],
+			viewFullImage: "查看原图",
+			close: "退出",
+			returnHome: "首页",
+			contents: "目录"
 		}
 	};
 	type Language = "zh" | "en";
 	let language: Language = "en";
+	let showContents = false;
 
 	onMount(() => {
 		language = (localStorage.getItem("language") as Language) || "en";
@@ -520,6 +523,12 @@
 	});
 </script>
 
-<TranslationBox {translations} {language} />
+<TranslationBox {translations} {language} {showContents} />
 
 <button on:click={() => goto("/")} class="return-home">{translations[language].returnHome}</button>
+<button
+	on:click={() => {
+		showContents = !showContents;
+	}}
+	class="show-contents">{translations[language].contents}</button
+>

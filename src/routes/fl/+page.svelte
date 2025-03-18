@@ -5,9 +5,6 @@
 
 	const translations = {
 		en: {
-			viewFullImage: "View Full Image",
-			close: "Close",
-			returnHome: "Home",
 			boxes: [
 				{
 					title: "The Fluorescent Lamp",
@@ -136,12 +133,13 @@
 						"Dimming of fluorescent lighting offers significant benefits - giving users control of their own lighting, and realising energy savings.   In certain environments it is a must, for instance in a lecture theatre to modify the lighting level when beaming a presentation.  In other applications the flexibility it gives to people has significant value, allowing them to match the illuminance on the working plane to their personal needs.\n\tThe control systems surrounding dimming of fluorescent lamps are becoming increasingly complex, for instance when linked to a daylight harvesting system to provide artificial lighting only at times of reduced natural illumination.  Dimming creates a rich visual experience and adds flexibility to any room, providing the right lighting environment for a variety of activities.\n\tAn added bonus is the fact that modern electronic ballasts permit a reduction in power consumption in parallel with the reduced light level, and this presents a valuable energy saving opportunity.  A further advantage is the use of dimming as an alternative to repeated on/off switching.  In this fashion substantial energy savings can be realised but without negatively impacting lamp life.\n\tTraditionally, dimming of fluorescent lamps has presented significant challenges.  If the power dissipation in the lamp is reduced too far, the electrode temperatures will fall such that their emission decreases and that leads to excessive wear and short life due to sputtering of the emissive material.  Cathode preheating needs to be maintained during dimming to the lower levels to avoid this problem.  Reignition of the discharge also becomes troublesome at very low currents, and in the past special tubes employing metal stripe ignition aids internally connected to one of the main electrodes were necessary.\n\tThe advent of the modern electronic ballast has greatly simplified matters.  By providing a variable signal voltage to the ballast, generally over the range 1 to 10 Volts, it can be triggered to regulate lamp power and automatically takes care of providing the necessary cathode heating and reignition voltage.  Standard lamp types can be used in all cases, and there is no further need to specify the former metal striped tubes."
 					]
 				}
-			]
+			],
+			viewFullImage: "View Full Image",
+			close: "Close",
+			returnHome: "Home",
+			contents: "Cont"
 		},
 		zh: {
-			viewFullImage: "查看原图",
-			close: "退出",
-			returnHome: "首页",
 			boxes: [
 				{
 					title: "荧光灯",
@@ -270,11 +268,16 @@
 						"荧光灯的调光提供了显著的好处——让用户能够控制自己的照明，并实现节能。在某些环境中，这是必须的，例如在演讲厅中，当播放演示文稿时需要调整照明水平。在其他应用中，它为人们提供的灵活性具有重要价值，使他们能够根据个人需求将工作平面上的照度与自己的需求相匹配。\n\t围绕荧光灯调光的控制系统变得越来越复杂，例如与日光采集系统连接，仅在自然照明减少时提供人工照明。调光创造了丰富的视觉体验，并为任何房间增加了灵活性，为各种活动提供了合适的照明环境。\n\t一个额外的好处是，现代电子镇流器允许随着光水平的降低而减少功耗，这提供了一个宝贵的节能机会。另一个优势是将调光作为频繁开关的替代方案。通过这种方式，可以实现显著的节能，而不会对灯的寿命产生负面影响。\n\t传统上，荧光灯的调光一直是一个重大挑战。如果灯中的功耗降低得太多，电极温度会下降，导致其发射减少，从而导致由于发射材料的溅射而过度磨损和寿命缩短。在调光到较低水平时需要保持阴极预热，以避免这个问题。在非常低的电流下重新点燃放电也变得麻烦，在过去，需要使用内部连接到主电极之一的金属条点火辅助装置的特殊灯管。\n\t现代电子镇流器的出现极大地简化了这一问题。通过向镇流器提供一个可变的信号电压，通常在1到10伏特之间，它可以被触发以调节灯的功率，并自动处理提供必要的阴极加热和重新点燃电压。在所有情况下都可以使用标准灯管类型，不再需要指定以前的金属条纹灯管。"
 					]
 				}
-			]
+			],
+			viewFullImage: "查看原图",
+			close: "退出",
+			returnHome: "首页",
+			contents: "目录"
 		}
 	};
 	type Language = "zh" | "en";
 	let language: Language = "en";
+	let showContents = false;
 
 	onMount(() => {
 		language = (localStorage.getItem("language") as Language) || "en";
@@ -284,6 +287,12 @@
 	});
 </script>
 
-<TranslationBox {translations} {language} />
+<TranslationBox {translations} {language} {showContents} />
 
 <button on:click={() => goto("/")} class="return-home">{translations[language].returnHome}</button>
+<button
+	on:click={() => {
+		showContents = !showContents;
+	}}
+	class="show-contents">{translations[language].contents}</button
+>

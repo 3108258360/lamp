@@ -180,7 +180,8 @@
 			],
 			viewFullImage: "View Full Image",
 			close: "Close",
-			returnHome: "Home"
+			returnHome: "Home",
+			contents: "Cont"
 		},
 		zh: {
 			boxes: [
@@ -363,12 +364,14 @@
 			],
 			viewFullImage: "查看原图",
 			close: "退出",
-			returnHome: "首页"
+			returnHome: "首页",
+			contents: "目录"
 		}
 	};
 
 	type Language = "zh" | "en";
 	let language: Language = "en";
+	let showContents = false;
 
 	onMount(() => {
 		language = (localStorage.getItem("language") as Language) || "en";
@@ -378,6 +381,12 @@
 	});
 </script>
 
-<TranslationBox {translations} {language} />
+<TranslationBox {translations} {language} {showContents} />
 
 <button on:click={() => goto("/")} class="return-home">{translations[language].returnHome}</button>
+<button
+	on:click={() => {
+		showContents = !showContents;
+	}}
+	class="show-contents">{translations[language].contents}</button
+>

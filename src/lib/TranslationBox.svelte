@@ -1,6 +1,8 @@
 <script lang="ts">
 	export let translations;
 	export let language;
+	export let showContents: boolean;
+	let contents = true;
 
 	let fullImageViewState = {
 		isVisible: false,
@@ -33,10 +35,10 @@
 {#each translations[language].boxes as box, boxIndex}
 	<div class="box">
 		{#if box.title}
-			<h1>{box.title}</h1>
+			<h1 id={box.title}>{box.title}</h1>
 		{/if}
 		{#if box.subhead}
-			<h2>{box.subhead}</h2>
+			<h2 id={box.subhead}>{box.subhead}</h2>
 		{/if}
 		{#if box.imgs}
 			<div class="img">
@@ -55,6 +57,19 @@
 		{/if}
 	</div>
 {/each}
+
+{#if showContents}
+	<div class="contents">
+		{#each translations[language].boxes as box}
+			{#if box.title}
+				<a href={"#" + box.title}><h1>{box.title}</h1></a>
+			{/if}
+			{#if box.subhead}
+				<a href={"#" + box.subhead}><h2>{box.subhead}</h2></a>
+			{/if}
+		{/each}
+	</div>
+{/if}
 
 {#if fullImageViewState.isVisible}
 	<div class="full-image">
