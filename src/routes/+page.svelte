@@ -7,6 +7,8 @@
 	const texts = {
 		en: {
 			title: "Welcome to the Museum of Electric Lamp Technology",
+			subhead1: "Detailed",
+			subhead2: "Introduction",
 			description: [
 				"The first artificial electric light was demonstrated during 1802 in London, by Sir Humphry Davy at the Royal Institution of Great Britain. It was the carbon arc discharge lamp, and since then the electric discharge has been intensely researched and developed for one fundamental reason - that it creates light from electricity more efficiently than any other kind of artificial light source.",
 				"Over time it was learned that the discharge could be made to generate light more efficiently by arranging that it took place inside a rare gas instead of through the air. This led to the creation of gaseous discharge lamps which frequently make use of the noble gases helium, neon, argon, krypton or xenon. Carbon dioxide was also of considerable interest owing to its white light output.",
@@ -16,16 +18,19 @@
 				"In more recent years, a  new category of solid-state light sources is emerging in the form of Light Emitting Diodes and their Organic counterparts, which are having an equally profound effect on the lighting market. In addition to general illumination with white light, their potential to create saturated colours with high efficacy has opened up entirely new areas in decorative lighting.",
 				"This website traces the development of the materials, science and technology behind electric light sources from their earliest beginnings right up to the present day. Where possible, these developments are illustrated with examples of historic lamps. Please follow the links on the left to choose a particular family of light source. Clicking on the category title will reveal technical information regarding the development of that style of light source. Choosing individual sub-category headings will bring up a page illustrating that technology with historic examples of the same."
 			],
-			linkText: [
+			linkText1: [
 				["Incandescent lamp", "/il"],
 				["Fluorescent Lamp", "/fl"],
 				["Low Pressure Sodium Lamp", "/lps"],
-				["Sodium-vapor lamp", "/svl"]
+				["Mercury Vapour Lamp", "/mvl"]
 			],
+			linkText2: [["Sodium-vapor lamp", "/svl"]],
 			buttonText: "中文"
 		},
 		zh: {
 			title: "欢迎来到电灯技术博物馆",
+			subhead1: "详情",
+			subhead2: "简介",
 			description: [
 				"1802年，汉弗里·戴维爵士在伦敦大不列颠皇家学会首次展示了人造电光，即碳弧放电灯。自那以后，电放电被深入研究和开发，原因只有一个——它比其他任何类型的人造光源都更高效地将电能转化为光能。",
 				"随着时间的推移，人们发现通过将放电安排在稀有气体中而不是空气中进行，可以使其更高效地产生光。这导致了气体放电灯的诞生，这种灯通常使用氦、氖、氩、氪或氙等惰性气体。由于其白光输出，二氧化碳也引起了相当大的关注。",
@@ -35,12 +40,13 @@
 				"在最近几年，一种新的固态光源类别以发光二极管及其有机对应物的形式出现，它们对灯具市场产生了同样深远的影响。除了用白光进行一般照明外，它们在产生高效率的饱和色方面的潜力也为装饰性照明开辟了全新的领域。",
 				"这个网站追溯了电光源的材料、科学和技术的发展，从它们最早的起源一直到今天。在可能的情况下，这些发展通过历史灯具的例子来说明。请通过左侧的链接选择特定类型的光源。点击类别标题将显示该类型光源的发展技术信息。选择各个子类别的标题将显示带有相同技术的历史实例的页面。"
 			],
-			linkText: [
+			linkText1: [
 				["白炽灯", "/il"],
 				["荧光灯", "/fl"],
 				["低压钠灯", "/lps"],
-				["钠灯", "/svl"]
+				["水银灯", "/mvl"]
 			],
+			linkText2: [["钠灯", "/svl"]],
 			buttonText: "English"
 		}
 	} as const;
@@ -72,7 +78,12 @@
 </button>
 <div class="box">
 	<h1>{text.title}</h1>
-	{#each text.linkText as [linkName, linkHref]}
+	<h2>{text.subhead1}</h2>
+	{#each text.linkText1 as [linkName, linkHref]}
+		<a href={linkHref} style="margin-right: 10px;">{linkName}</a>
+	{/each}
+	<h2>{text.subhead2}</h2>
+	{#each text.linkText2 as [linkName, linkHref]}
 		<a href={linkHref} style="margin-right: 10px;">{linkName}</a>
 	{/each}
 	{#each text.description as descriptionItem}
