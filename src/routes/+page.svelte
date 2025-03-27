@@ -24,7 +24,7 @@
 				["Low Pressure Sodium Lamp", "/lps"],
 				["Mercury Vapour Lamp", "/mvl"]
 			],
-			linkText2: [["Sodium-vapor lamp", "/svl"]],
+			linkText2: [["Sodium-vapor lamp", "/ssvl"]],
 			buttonText: "中文"
 		},
 		zh: {
@@ -44,9 +44,9 @@
 				["白炽灯", "/il"],
 				["荧光灯", "/fl"],
 				["低压钠灯", "/lps"],
-				["水银灯", "/mvl"]
+				["汞灯", "/mvl"]
 			],
-			linkText2: [["钠灯", "/svl"]],
+			linkText2: [["钠灯", "/ssvl"]],
 			buttonText: "English"
 		}
 	} as const;
