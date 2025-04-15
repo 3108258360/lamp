@@ -55,6 +55,20 @@
 				<p>{desc}</p>
 			{/each}
 		{/if}
+		{#if box.pictures}
+			<div class="lamps">
+				{#each box.pictures as picture, index}
+					<div class="lamp">
+						<img src={picture} alt={picture} />
+						<div class="l_intro">
+							<h3><span>{box.intros[index][0]}</span><span>{box.intros[index][1]}</span></h3>
+							<p>{box.intros[index][2]}</p>
+							<p>{box.intros[index][3]}</p>
+						</div>
+					</div>
+				{/each}
+			</div>
+		{/if}
 	</div>
 {/each}
 

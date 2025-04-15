@@ -9,6 +9,7 @@
 			title: "Welcome to the Museum of Electric Lamp Technology",
 			subhead1: "Detailed",
 			subhead2: "Introduction",
+			subhead3: "Gallery",
 			description: [
 				"The first artificial electric light was demonstrated during 1802 in London, by Sir Humphry Davy at the Royal Institution of Great Britain. It was the carbon arc discharge lamp, and since then the electric discharge has been intensely researched and developed for one fundamental reason - that it creates light from electricity more efficiently than any other kind of artificial light source.",
 				"Over time it was learned that the discharge could be made to generate light more efficiently by arranging that it took place inside a rare gas instead of through the air. This led to the creation of gaseous discharge lamps which frequently make use of the noble gases helium, neon, argon, krypton or xenon. Carbon dioxide was also of considerable interest owing to its white light output.",
@@ -25,12 +26,14 @@
 				["Mercury Vapour Lamp", "/mvl"]
 			],
 			linkText2: [["Sodium-vapor lamp", "/ssvl"]],
+			linkText3: [["Carbon Filament lamp", "cf"]],
 			buttonText: "中文"
 		},
 		zh: {
 			title: "欢迎来到电灯技术博物馆",
 			subhead1: "详情",
 			subhead2: "简介",
+			subhead3: "画廊",
 			description: [
 				"1802年，汉弗里·戴维爵士在伦敦大不列颠皇家学会首次展示了人造电光，即碳弧放电灯。自那以后，电放电被深入研究和开发，原因只有一个——它比其他任何类型的人造光源都更高效地将电能转化为光能。",
 				"随着时间的推移，人们发现通过将放电安排在稀有气体中而不是空气中进行，可以使其更高效地产生光。这导致了气体放电灯的诞生，这种灯通常使用氦、氖、氩、氪或氙等惰性气体。由于其白光输出，二氧化碳也引起了相当大的关注。",
@@ -47,6 +50,7 @@
 				["汞灯", "/mvl"]
 			],
 			linkText2: [["钠灯", "/ssvl"]],
+			linkText3: [["碳丝灯", "cf"]],
 			buttonText: "English"
 		}
 	} as const;
@@ -84,6 +88,10 @@
 	{/each}
 	<h2>{text.subhead2}</h2>
 	{#each text.linkText2 as [linkName, linkHref]}
+		<a href={linkHref} style="margin-right: 10px;">{linkName}</a>
+	{/each}
+	<h2>{text.subhead3}</h2>
+	{#each text.linkText3 as [linkName, linkHref]}
 		<a href={linkHref} style="margin-right: 10px;">{linkName}</a>
 	{/each}
 	{#each text.description as descriptionItem}
