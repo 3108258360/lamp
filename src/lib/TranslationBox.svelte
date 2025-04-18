@@ -2,7 +2,6 @@
 	export let translations;
 	export let language;
 	export let showContents: boolean;
-	let contents = true;
 
 	let fullImageViewState = {
 		isVisible: false,
@@ -31,6 +30,11 @@
 		fullImageViewState.isVisible = false;
 	};
 </script>
+
+<div class="references">
+	References: <a href="http://www.lamptech.co.uk/" target="_blank">lamptech</a>
+	<a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>
+</div>
 
 {#each translations[language].boxes as box, boxIndex}
 	<div class="box">

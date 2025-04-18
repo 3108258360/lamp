@@ -7,8 +7,8 @@
 	const texts = {
 		en: {
 			title: "Welcome to the Museum of Electric Lamp Technology",
-			subhead1: "Detailed",
-			subhead2: "Introduction",
+			subhead1: "Detail",
+			subhead2: "Intro",
 			subhead3: "Gallery",
 			description: [
 				"The first artificial electric light was demonstrated during 1802 in London, by Sir Humphry Davy at the Royal Institution of Great Britain. It was the carbon arc discharge lamp, and since then the electric discharge has been intensely researched and developed for one fundamental reason - that it creates light from electricity more efficiently than any other kind of artificial light source.",
@@ -19,14 +19,37 @@
 				"In more recent years, a  new category of solid-state light sources is emerging in the form of Light Emitting Diodes and their Organic counterparts, which are having an equally profound effect on the lighting market. In addition to general illumination with white light, their potential to create saturated colours with high efficacy has opened up entirely new areas in decorative lighting.",
 				"This website traces the development of the materials, science and technology behind electric light sources from their earliest beginnings right up to the present day. Where possible, these developments are illustrated with examples of historic lamps. Please follow the links on the left to choose a particular family of light source. Clicking on the category title will reveal technical information regarding the development of that style of light source. Choosing individual sub-category headings will bring up a page illustrating that technology with historic examples of the same."
 			],
-			linkText1: [
+			detail: [
 				["Incandescent lamp", "/il"],
 				["Fluorescent Lamp", "/fl"],
 				["Low Pressure Sodium Lamp", "/lps"],
 				["Mercury Vapour Lamp", "/mvl"]
 			],
-			linkText2: [["Sodium-vapor lamp", "/ssvl"]],
-			linkText3: [["Carbon Filament lamp", "cf"]],
+			intro: [["Sodium-vapor lamp", "/svl"]],
+			gallery: {
+				il: [
+					["Carbon Filament lamp", "/cf"],
+					["Tantalum Filament lamp", "/taf"],
+					["Tungsten Filament lamp", "/tuf"],
+					["Reflector Lamps", "/ref"],
+					["Decorative Lamps", "/dec"],
+					["Special incandescent lamps", "/si"]
+				],
+				hl: [
+					["Tungsten Halogen - Double Ended", "/de"],
+					["Tungsten Halogen - Single Ended", "/se"],
+					["Tungsten Halogen - Double Jacket", "/dj"],
+					["Tungsten Halogen - Reflector", "/ref"]
+				],
+				sl: [
+					["LED - Discrete Devices", "/dis"],
+					["LED - Integrated Lamps", "/int"]
+				],
+				fl: [
+					["Linear Fluorescent Lamps", "/lf"],
+					["Non-Linear Fluorescent", "/nl"]
+				]
+			},
 			buttonText: "中文"
 		},
 		zh: {
@@ -43,14 +66,37 @@
 				"在最近几年，一种新的固态光源类别以发光二极管及其有机对应物的形式出现，它们对灯具市场产生了同样深远的影响。除了用白光进行一般照明外，它们在产生高效率的饱和色方面的潜力也为装饰性照明开辟了全新的领域。",
 				"这个网站追溯了电光源的材料、科学和技术的发展，从它们最早的起源一直到今天。在可能的情况下，这些发展通过历史灯具的例子来说明。请通过左侧的链接选择特定类型的光源。点击类别标题将显示该类型光源的发展技术信息。选择各个子类别的标题将显示带有相同技术的历史实例的页面。"
 			],
-			linkText1: [
+			detail: [
 				["白炽灯", "/il"],
 				["荧光灯", "/fl"],
 				["低压钠灯", "/lps"],
 				["汞灯", "/mvl"]
 			],
-			linkText2: [["钠灯", "/ssvl"]],
-			linkText3: [["碳丝灯", "cf"]],
+			intro: [["钠灯", "/svl"]],
+			gallery: {
+				il: [
+					["碳丝白炽灯", "/cf"],
+					["钽丝白炽灯", "/taf"],
+					["钨丝白炽灯", "/tuf"],
+					["反射白炽灯", "/ref"],
+					["装饰白炽灯", "/dec"],
+					["特殊白炽灯和卤素灯", "/si"]
+				],
+				hl: [
+					["钨丝卤素灯-双端", "/de"],
+					["钨丝卤素灯-单端", "/se"],
+					["钨丝卤素灯-双层外壳", "/dj"],
+					["钨丝卤素灯-反射灯", "/ref"]
+				],
+				sl: [
+					["LED - 分立器件", "/dis"],
+					["LED - 集成灯", "/int"]
+				],
+				fl: [
+					["线性荧光灯", "/lf"],
+					["非线性荧光灯", "/nl"]
+				]
+			},
 			buttonText: "English"
 		}
 	} as const;
@@ -83,16 +129,20 @@
 <div class="box">
 	<h1>{text.title}</h1>
 	<h2>{text.subhead1}</h2>
-	{#each text.linkText1 as [linkName, linkHref]}
-		<a href={linkHref} style="margin-right: 10px;">{linkName}</a>
+	{#each text.detail as [linkName, linkHref]}
+		<a href={"/detail" + linkHref} style="margin-right: 10px;">{linkName}</a>
 	{/each}
 	<h2>{text.subhead2}</h2>
-	{#each text.linkText2 as [linkName, linkHref]}
-		<a href={linkHref} style="margin-right: 10px;">{linkName}</a>
+	{#each text.intro as [linkName, linkHref]}
+		<a href={"/intro" + linkHref} style="margin-right: 10px;">{linkName}</a>
 	{/each}
 	<h2>{text.subhead3}</h2>
-	{#each text.linkText3 as [linkName, linkHref]}
-		<a href={linkHref} style="margin-right: 10px;">{linkName}</a>
+	{#each Object.entries(text.gallery) as [category, items]}
+		<div style="margin: 16px 0;">
+			{#each items as [linkName, linkHref]}
+				<a href={"/gallery/" + category + linkHref} style="margin-right: 10px;">{linkName}</a>
+			{/each}
+		</div>
 	{/each}
 	{#each text.description as descriptionItem}
 		<p>{descriptionItem}</p>

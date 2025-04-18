@@ -12,7 +12,15 @@ a {
 	font-size: 20px;
 	color: #007bff;
 }
-
+.references {
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.references a {
+	margin: 0 10px;
+}
 .box {
 	margin: 20px auto;
 	width: 70%;
