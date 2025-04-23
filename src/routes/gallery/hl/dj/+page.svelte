@@ -89,7 +89,7 @@
 					]
 				},
 				{
-					subhead: "Quartz Capsule High Power",
+					subhead: "高功率石英胶囊",
 					intros: [
 						["Philips", "1000W", "Double Jacket High Efficacy - IODE", "1989"],
 						["Wotan", "250W", "Halostar High Wattage - Original Glass Design", "1986"],
@@ -102,7 +102,7 @@
 					]
 				},
 				{
-					subhead: "Quartz Capsule Low Power",
+					subhead: "低功率石英胶囊",
 					intros: [
 						["Thorn", "100W", "Low Wattage Universal Burning - Ceramic type", "1989"],
 						["Thorn", "100W", "Low Wattage Universal Burning - Glass type", "~1989"],
@@ -131,7 +131,7 @@
 					]
 				},
 				{
-					subhead: "Hardglass Capsule",
+					subhead: "硬石英胶囊",
 					intros: [
 						["GE", "51W", "A-Line Performance Plus Hardglass Design", "1987"],
 						["Sylvania", "72W", "Capsylite High Efficacy with Diode Rectifier", "1989"],
@@ -144,7 +144,7 @@
 					]
 				},
 				{
-					subhead: "Integrated Transformer",
+					subhead: "集成变压器",
 					intros: [["Philips", "30W", "MasterClassic with 12V IRC Capsule & Transfo.", "2008"]],
 					pictures: ["/t TH DJ QIR30A55CL-E27-230 Philips.jpg"]
 				}
